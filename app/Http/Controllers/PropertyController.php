@@ -4,7 +4,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use App\Property;
+//use Symfony\Component\HttpFoundation\Session\Session;
+use Validator;
 
 class PropertyController extends Controller {
 
@@ -27,9 +32,13 @@ class PropertyController extends Controller {
 	 */
 	public function create()
 	{
-		//
         return view('property.create');
 	}
+
+    public function location()
+    {
+        return view('property.location');
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -39,6 +48,20 @@ class PropertyController extends Controller {
 	public function store()
 	{
 		//
+        $rules = array(
+            'type_id' => 'required',
+            'title' => 'required',
+            'introduction'   => 'required',
+            'full_description'   => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if($validator->fails())
+        {
+            return Redirect::to('property/create')->withErrors($validator)->withInput();
+        } else {
+            Session::put('property', Input::all());
+            return Redirect::to('property/location')->withErrors($validator)->withInput();
+        }
 	}
 
 	/**

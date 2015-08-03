@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Create Property Room Types</h1>
+    <h1>Create Property Location</h1>
 
     <ul class="list-inline">
         <li>Basic</li>

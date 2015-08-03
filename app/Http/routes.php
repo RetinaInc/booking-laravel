@@ -22,6 +22,9 @@ Route::controllers([
 
 Route::resource('property', 'PropertyController');
 
-Route::resource('roomttype', 'RoomTypeController');
+Route::resource('location', 'PropertyController@location');
+
+
+Route::resource('property/room/type', 'RoomTypeController');
 
 Route::resource('room', 'RoomController');

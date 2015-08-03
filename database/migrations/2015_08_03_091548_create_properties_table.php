@@ -17,6 +17,7 @@ class CreatePropertiesTable extends Migration {
 			$table->increments('id');
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+
             $table->unsignedInteger('user_id_edited')->nullable();
             $table->foreign('user_id_edited')->references('id')->on('users')->onDelete('set null');
 
