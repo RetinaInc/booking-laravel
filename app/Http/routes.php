@@ -20,11 +20,14 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('property/location', 'PropertyController@location');
+Route::post('property/location', 'PropertyController@location');
+
 Route::resource('property', 'PropertyController');
 
-Route::resource('location', 'PropertyController@location');
 
 
-Route::resource('property/room/type', 'RoomTypeController');
+
+Route::resource('property/room/type/{property_id}', 'RoomTypeController');
 
 Route::resource('room', 'RoomController');

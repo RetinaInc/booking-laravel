@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <a href="{{ route('property.create') }}" class="btn btn-success">Create</a>
+        <a href="{{ route('property.create') }}" class="btn btn-success text-right">Create</a>
+        <br />
+        <br />
         <table width="100%" class="table table-striped table-bordered">
             <thead>
                <tr>

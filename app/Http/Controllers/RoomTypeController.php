@@ -22,9 +22,10 @@ class RoomTypeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($property_id)
 	{
 		//
+        return view('roomtype.create')->with('property_id', $property_id);
 	}
 
 	/**

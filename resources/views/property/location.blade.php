@@ -17,7 +17,7 @@
     <!-- if there are creation errors, they will show here -->
     {!! HTML::ul($errors->all()) !!}
 
-    {!! Form::open(array('url' => 'property' )) !!}
+    {!! Form::open(array('url' => 'property/location' )) !!}
 
 
     <div class="form-group">

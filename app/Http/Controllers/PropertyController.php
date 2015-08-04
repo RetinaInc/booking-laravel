@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Property;
 //use Symfony\Component\HttpFoundation\Session\Session;
 use Validator;
+use Auth;
 
 class PropertyController extends Controller {
 
@@ -35,8 +36,16 @@ class PropertyController extends Controller {
         return view('property.create');
 	}
 
-    public function location()
+    public function location(Request $request)
     {
+        if($request->isMethod('post'))
+        {
+            $data = array_merge(Session::get('property'), Input::all());
+            $data['user_id'] = Auth::user()->id;
+            unset($data['_token']);
+            $propertyId = Property::insert($data);
+            return Redirect::to('property/room/type/'.$propertyId."/create");
+        }
         return view('property.location');
     }
 

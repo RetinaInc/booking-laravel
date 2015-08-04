@@ -42,19 +42,19 @@
 
     <div class="form-group">
         {!! Form::label('cancellation_policy', 'Cancellation Policy.') !!}
-        {!! Form::text('cancellation_policy', Input::old('cancellation_policy'), array('class' => 'form-control')) !!}
+        {!! Form::textarea('cancellation_policy', Input::old('cancellation_policy'), array('class' => 'form-control')) !!}
     </div>
 
 
     <div class="form-group">
         {!! Form::label('full_description', 'Description.') !!}
-        {!! Form::text('full_description', Input::old('full_description'), array('class' => 'form-control')) !!}
+        {!! Form::textarea('full_description', Input::old('full_description'), array('class' => 'form-control')) !!}
     </div>
 
 
     <div class="form-group">
-        {!! Form::label('is_active', 'Active') !!}
-        {!! Form::checkbox('is_active', Input::old('is_active'), array('class' => 'form-control')) !!}
+        {!! Form::label('is_published', 'Activate') !!}
+        {!! Form::checkbox('is_published', Input::old('is_published'), array('class' => 'form-control')) !!}
     </div>
 
 
