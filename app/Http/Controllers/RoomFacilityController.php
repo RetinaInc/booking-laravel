@@ -3,13 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\RoomType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 
-
-class RoomTypeController extends Controller {
+class RoomFacilityController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -26,11 +22,9 @@ class RoomTypeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create($property_id)
+	public function create()
 	{
 		//
-
-        return view('roomtype.create')->with('property_id', $property_id);
 	}
 
 	/**
@@ -38,22 +32,9 @@ class RoomTypeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store($property_id)
+	public function store()
 	{
 		//
-        foreach(Input::get('name') as $index => $value)
-        {
-            if(!empty($value))
-            {
-                $roomType = new RoomType();
-
-                $roomType->rooms_available = 0;
-                $roomType->property_id = $property_id;
-                $roomType->name = trim($value);
-                $roomType->save();
-            }
-        }
-        return Redirect::to('property/room/'.$property_id."/create");
 	}
 
 	/**

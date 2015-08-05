@@ -24,7 +24,7 @@ class CreateRoomsTable extends Migration {
             $table->unsignedInteger('property_id')->nullable();
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('set null');
 
-            $table->boolean('is_published');
+            $table->boolean('is_published')->nullable();
 
 			$table->timestamps();
 		});

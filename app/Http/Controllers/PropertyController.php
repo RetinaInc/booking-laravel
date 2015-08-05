@@ -44,7 +44,7 @@ class PropertyController extends Controller {
             $data['user_id'] = Auth::user()->id;
             unset($data['_token']);
             $propertyId = Property::insert($data);
-            return Redirect::to('property/room/type/'.$propertyId."/create");
+            return Redirect::to('property/facilities/'.$propertyId."/create");
         }
         return view('property.location');
     }
@@ -68,7 +68,9 @@ class PropertyController extends Controller {
         {
             return Redirect::to('property/create')->withErrors($validator)->withInput();
         } else {
-            Session::put('property', Input::all());
+            $data = Input::all();
+            $data['is_published'] = ($data['is_published'] == 'on' ? TRUE : FALSE);
+            Session::put('property', $data);
             return Redirect::to('property/location')->withErrors($validator)->withInput();
         }
 	}

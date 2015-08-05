@@ -1,18 +1,12 @@
 @extends('app')
 
-@section('content')
-<div class="container">
-    <h1>Create a Property</h1>
+@section('breadcrumbs')
+    @include('property.breadcrumbs')
+@stop
 
-    <ul class="list-inline">
-        <li>Basic</li>
-        <li>Location</li>
-        <li>Room Types</li>
-        <li>Rooms</li>
-        <li>Calendar</li>
-        <li>Facilities</li>
-        <li>Room Facilities</li>
-    </ul>
+@section('content')
+
+    <h1>Create a Property</h1>
 
     <!-- if there are creation errors, they will show here -->
     {!! HTML::ul($errors->all()) !!}
@@ -22,7 +16,7 @@
 
     <div class="form-group">
         {!! Form::label('name', 'Property Type') !!}
-        {!! Form::select('type_id', App\PropertyType::lists('name', 'id'), Input::old('type_id'), ['class'=> 'form-control']) !!}
+        {!! Form::select('type_id', array('' => 'Please select type') + App\PropertyType::lists('name', 'id'), Input::old('type_id'), ['class'=> 'form-control']) !!}
     </div>
 
     <div class="form-group">

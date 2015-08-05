@@ -1,17 +1,31 @@
 @extends('app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Home</div>
+@section('breadcrumbs')
+    @include('property.breadcrumbs')
+@stop
 
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@section('content')
+    <h1>Edit Room Facilities</h1>
+
+    <!-- if there are creation errors, they will show here -->
+    {!! HTML::ul($errors->all()) !!}
+
+    {!! Form::open(array('url' => 'property/facilities/'.$property_id )) !!}
+
+    <table width="50%">
+        @foreach($facilities as $facility)
+            <tr class="form-group form-inline">
+                <td>{!! Form::label('facility_id', $facility->name ) !!}</td>
+                <td>
+                    {!! Form::checkbox('facility['. $facility->id.']', Input::old('facility['.$facility->id.']'), false, ['class'=> 'form-control']) !!}
+                </td>
+            </tr>
+        @endforeach
+    </table>
+
+    {!! Form::submit('Save Room Facilities', array('class' => 'btn btn-primary')) !!}
+
+    {!! Form::close() !!}
+
+
 @endsection

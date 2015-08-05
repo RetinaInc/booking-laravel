@@ -16,7 +16,7 @@ class CreatePropertyTypesTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name', 255);
-            $table->boolean('is_active');
+            $table->boolean('is_active')->nullable();
 			$table->timestamps();
 		});
 	}

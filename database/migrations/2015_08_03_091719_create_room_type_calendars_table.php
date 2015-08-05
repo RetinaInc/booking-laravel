@@ -22,7 +22,7 @@ class CreateRoomTypeCalendarsTable extends Migration {
             $table->date('day');
             $table->decimal('price');
 
-            $table->boolean('is_booked');
+            $table->boolean('is_booked')->nullable();
 
 			$table->timestamps();
 		});

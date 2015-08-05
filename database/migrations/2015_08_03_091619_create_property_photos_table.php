@@ -20,6 +20,7 @@ class CreatePropertyPhotosTable extends Migration {
             $table->text('description')->nullable();
             $table->unsignedInteger('property_id')->nullable();
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('set null');
+            $table->boolean('is_default')->nullable();
 			$table->timestamps();
 		});
 	}

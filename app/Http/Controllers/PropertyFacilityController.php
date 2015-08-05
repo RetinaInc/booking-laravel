@@ -1,15 +1,15 @@
 <?php namespace App\Http\Controllers;
 
+use App\Facility;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\RoomType;
+use App\PropertyFacility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
-
-class RoomTypeController extends Controller {
+class PropertyFacilityController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -29,8 +29,10 @@ class RoomTypeController extends Controller {
 	public function create($property_id)
 	{
 		//
-
-        return view('roomtype.create')->with('property_id', $property_id);
+        $facilities  = Facility::all();
+        return view('propertyfacility.create')
+                ->with('property_id', $property_id)
+                ->with('facilities', $facilities);
 	}
 
 	/**
@@ -41,19 +43,14 @@ class RoomTypeController extends Controller {
 	public function store($property_id)
 	{
 		//
-        foreach(Input::get('name') as $index => $value)
+        foreach(Input::get('facility') as $facility_id => $is_on)
         {
-            if(!empty($value))
-            {
-                $roomType = new RoomType();
-
-                $roomType->rooms_available = 0;
-                $roomType->property_id = $property_id;
-                $roomType->name = trim($value);
-                $roomType->save();
-            }
+            $propertyFacility = new PropertyFacility();
+            $propertyFacility->property_id = $property_id;
+            $propertyFacility->facility_id = $facility_id;
+            $propertyFacility->save();
         }
-        return Redirect::to('property/room/'.$property_id."/create");
+        return Redirect::to('property/room/type?property_id='.$property_id);
 	}
 
 	/**

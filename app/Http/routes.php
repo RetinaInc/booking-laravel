@@ -25,9 +25,10 @@ Route::post('property/location', 'PropertyController@location');
 
 Route::resource('property', 'PropertyController');
 
+Route::resource('property/facilities/{property_id}', 'PropertyFacilityController');
 
-
+Route::resource('property/room/{property_id}', 'RoomController');
 
 Route::resource('property/room/type/{property_id}', 'RoomTypeController');
 
-Route::resource('room', 'RoomController');
+

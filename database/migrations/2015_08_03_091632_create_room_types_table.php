@@ -16,9 +16,9 @@ class CreateRoomTypesTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name');
-            $table->integer('rooms_available');
-            $table->integer('minimum_stay');
-            $table->integer('maximum_stay');
+            $table->integer('rooms_available')->nullable();
+            $table->integer('minimum_stay')->default(1);
+            $table->integer('maximum_stay')->default(1);
 
             $table->unsignedInteger('property_id')->nullable();
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('set null');

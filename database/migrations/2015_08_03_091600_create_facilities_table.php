@@ -16,8 +16,8 @@ class CreateFacilitiesTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name');
-            $table->boolean('is_property');
-            $table->boolean('is_room');
+            $table->boolean('is_property')->nullable();
+            $table->boolean('is_room')->nullable();
 			$table->timestamps();
 		});
 	}

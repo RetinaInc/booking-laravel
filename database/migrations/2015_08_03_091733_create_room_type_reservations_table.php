@@ -27,7 +27,7 @@ class CreateRoomTypeReservationsTable extends Migration {
             $table->string('ages');
 
             $table->text('notes');
-            $table->text('is_agent');
+            $table->boolean('is_agent')->nullable();
 
 			$table->timestamps();
 		});
