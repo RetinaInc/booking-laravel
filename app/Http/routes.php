@@ -25,10 +25,13 @@ Route::post('property/location', 'PropertyController@location');
 
 Route::resource('property', 'PropertyController');
 
-Route::resource('property/facilities/{property_id}', 'PropertyFacilityController');
+Route::get('property/facilities/{property_id}', 'PropertyFacilityController@create');
+Route::post('property/facilities/{property_id}', 'PropertyFacilityController@store');
 
-Route::resource('property/room/{property_id}', 'RoomController');
+Route::get('property/room/type/{property_id}', 'RoomTypeController@create');
+Route::post('property/room/type/{property_id}', 'RoomTypeController@store');
 
-Route::resource('property/room/type/{property_id}', 'RoomTypeController');
+Route::get('property/room/{property_id}', 'RoomController@create');
+Route::post('property/room/{property_id}', 'RoomController@store');
 
 
